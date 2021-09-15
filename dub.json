@@ -1,0 +1,11 @@
+{
+	"authors": [
+		"Isaac Robinson"
+	],
+	"dependencies": {
+		"plot2kill": "~>0.0.2"
+	},
+	"description": "A minimal D application.",
+	"license": "proprietary",
+	"name": "compbioproject"
+}
