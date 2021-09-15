@@ -3,7 +3,10 @@
 		"Isaac Robinson"
 	],
 	"dependencies": {
-		"plot2kill": "~>0.0.2"
+		"ggplotd": ">=0.4.5"
+	},
+	"subConfigurations": {
+		"ggplotd": "ggplotd-gtk"
 	},
 	"description": "A minimal D application.",
 	"license": "proprietary",

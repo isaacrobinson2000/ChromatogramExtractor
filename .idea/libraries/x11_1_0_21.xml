@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="x11-1.0.21">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.dub/packages/x11-1.0.21/x11/source" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

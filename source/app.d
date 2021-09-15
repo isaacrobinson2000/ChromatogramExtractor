@@ -19,8 +19,9 @@ int main(string[] args) {
 				(ChromatogamExtactor!(typeof(input))).extractChromatograms(input, output);
 				writeln("Done!");
 				return 0;
-			case "show":
+			case "plotTo":
 				if(show(args)) return 0;
+				break;
 			default:
 				break;
 		}
@@ -40,13 +41,14 @@ enum MATCH_TYPE = [
 ];
 
 bool show(string[] args) {
-	if(args.length != 5) return false;
+	if(args.length != 6) return false;
 
-	auto input = FileCharInputRange(args[2], "rb");
+	auto input = new FileCharInputRange!(ubyte, ubyte)(File(args[2], "rb"));
 	auto matchFunc = MATCH_TYPE[args[3]](to!string(args[4]));
 
-	writeln("Plotting...");
-	plotChromatogram(input, matchFunc);
+	writeln("Plotting and Saving...");
+	plotChromatogram(input, matchFunc, args[5]);
+	writeln("Done!");
 	return true;
 }
 
@@ -56,5 +58,5 @@ Cromatogram Analyzer
 Commands:
 	- 'extract mzML_FILE OUTPUT': Extract chromatograms to a new chromato file.
 	- 'info CHROMATO_FILE': Get info about the given extracted chromato file..
-	- 'plot CHROMATO_FILE {N:match name, I:match index} MATCH_VAL': Display a plot of the given chromatogram.
+	- 'plotTo CHROMATO_FILE {N:match name, I:match index} MATCH_VAL DEST_PICTURE': Save a plot of the given chromatogram.
 ";

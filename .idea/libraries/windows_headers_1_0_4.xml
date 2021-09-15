@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="windows-headers-1.0.4">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.dub/packages/windows-headers-1.0.4/windows-headers/source" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
