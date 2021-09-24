@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gtk-d:gstreamer-3.3.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.dub/packages/gtk-d-3.3.1/gtk-d/srcgstreamer" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

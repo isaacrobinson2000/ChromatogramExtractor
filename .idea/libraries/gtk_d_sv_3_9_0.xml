@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="gtk-d:sv-3.9.0">
-    <CLASSES>
-      <root url="file://$USER_HOME$/.dub/packages/gtk-d-3.9.0/gtk-d/generated/sourceview" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

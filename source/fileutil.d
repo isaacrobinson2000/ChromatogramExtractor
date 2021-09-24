@@ -3,10 +3,10 @@ module fileutil;
 import std.conv: to;
 import core.exception: RangeError;
 import std.stdio: File;
-import std.bitmanip: Endian, read, append;
 import std.traits: isStaticArray, isInstanceOf;
 import std.range;
 import sys = std.system;
+import std.bitmanip: Endian, read, append;
 
 class FileCharInputRange(T = ubyte, T_RETURN = T, uint SIZE = 4096) {
     private:
@@ -102,6 +102,9 @@ template IOStruct(VALS...) if(isIOValues!VALS) {
                     }
                 }
                 else {
+                    import std.stdio;
+                    writeln("Loading " ~ val.name);
+                    writeln(mixin("s." ~ val.lengthProp));
                     mixin("s." ~ val.name).length = mixin("s." ~ val.lengthProp);
                     foreach(ref element; mixin("s." ~ val.name)) {
                         element = read!(val.Type, val.endian, R)(r);

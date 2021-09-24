@@ -3,6 +3,7 @@ import chromatogram;
 import fileutil;
 import plotting;
 import std.conv: to;
+import plottingui: runPlottingApp;
 
 int main(string[] args) {
 	if(args.length >= 2) {
@@ -20,7 +21,10 @@ int main(string[] args) {
 				writeln("Done!");
 				return 0;
 			case "plotTo":
-				if(show(args)) return 0;
+				if(plotTo(args)) return 0;
+				break;
+			case "view":
+				if(view(args)) return 0;
 				break;
 			default:
 				break;
@@ -40,16 +44,27 @@ enum MATCH_TYPE = [
 "N": &searchByName
 ];
 
-bool show(string[] args) {
+bool plotTo(string[] args) {
 	if(args.length != 6) return false;
 
 	auto input = new FileCharInputRange!(ubyte, ubyte)(File(args[2], "rb"));
 	auto matchFunc = MATCH_TYPE[args[3]](to!string(args[4]));
 
 	writeln("Plotting and Saving...");
-	plotChromatogram(input, matchFunc, args[5]);
+	exportChromatogramPlot(input, matchFunc, args[5]);
 	writeln("Done!");
 	return true;
+}
+
+bool view(string[] args) {
+	if(args.length != 5) return false;
+
+	auto input = new FileCharInputRange!(ubyte, ubyte)(File(args[2], "rb"));
+	auto matchFunc = MATCH_TYPE[args[3]](to!string(args[4]));
+
+	writeln("Showing Plot...");
+
+	return runPlottingApp([], plotChromatogram(input, matchFunc)) == 0;
 }
 
 enum HELP_MSG = "
@@ -57,6 +72,7 @@ Cromatogram Analyzer
 
 Commands:
 	- 'extract mzML_FILE OUTPUT': Extract chromatograms to a new chromato file.
-	- 'info CHROMATO_FILE': Get info about the given extracted chromato file..
+	- 'info CHROMATO_FILE': Get info about the given extracted chromato file.
 	- 'plotTo CHROMATO_FILE {N:match name, I:match index} MATCH_VAL DEST_PICTURE': Save a plot of the given chromatogram.
+	- 'view CHROMATO_FILE {N:match name, I:match index} MATCH_VAL: Display a plot to a UI window.
 ";

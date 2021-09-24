@@ -7,9 +7,9 @@
 		"derelict-util": "2.1.0",
 		"dstats": "1.0.6",
 		"dunit": "1.0.16",
-		"ggplotd": "0.4.7",
-		"gtk-d": "3.9.0",
-		"painlesstraits": "0.0.3",
+		"ggplotd": "1.2.3",
+		"gtk-d": "3.3.1",
+		"painlesstraits": "0.3.0",
 		"windows-headers": "1.0.4",
 		"x11": "1.0.21"
 	}

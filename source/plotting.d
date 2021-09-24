@@ -12,6 +12,7 @@ private {
     import ggplotd.geom;
     import ggplotd.aes;
     import ggplotd.axes: xaxisLabel, yaxisLabel;
+    import ggplotd.theme: background;
 }
 
 alias ChromatoSearchFunction = bool delegate(ref ChromatogramData, size_t i);
@@ -25,7 +26,7 @@ ChromatoSearchFunction searchByName(string name) {
     return (ref ChromatogramData d, size_t i) => d.name == name;
 }
 
-void plotChromatogram(I)(I input, ChromatoSearchFunction isMatch, string saveLoc) if(isBinaryInput!I) {
+GGPlotD plotChromatogram(I)(I input, ChromatoSearchFunction isMatch) if(isBinaryInput!I) {
     auto reader = new ChromatogramReader!I(input);
 
     ChromatogramData toPlot;
@@ -38,12 +39,18 @@ void plotChromatogram(I)(I input, ChromatoSearchFunction isMatch, string saveLoc
     }
 
     auto gg = zip(toPlot.times, toPlot.intensities).map!(
-        (val) => aes!("x", "y", "colour", "size")(val[0], val[1], "blue", 0.8)
+    (val) => aes!("x", "y", "colour", "size")(val[0], val[1], "blue", 0.8)
     ).array.geomLine.putIn(GGPlotD());
 
     gg.put(xaxisLabel("Time"));
     gg.put(yaxisLabel("Intensity"));
     gg.put(title("Chromatogram " ~ cast(string) toPlot.name));
+    gg.put(background("white"));
 
-    gg.save(saveLoc);
+    return gg;
 }
+
+void exportChromatogramPlot(I)(I input, ChromatoSearchFunction isMatch, string saveLoc) if(isBinaryInput!I) {
+    plotChromatogram(input, isMatch).save(saveLoc);
+}
+

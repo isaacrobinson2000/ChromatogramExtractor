@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="ggplotd-0.4.7">
+  <library name="gtk-d:gtkdgl-3.3.1">
     <CLASSES>
-      <root url="file://$USER_HOME$/.dub/packages/ggplotd-0.4.7/ggplotd/source" />
+      <root url="file://$USER_HOME$/.dub/packages/gtk-d-3.3.1/gtk-d/srcgl" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

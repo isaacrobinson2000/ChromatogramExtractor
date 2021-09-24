@@ -5,19 +5,21 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="DMD64 D Compiler v2.092.0" jdkType="DMD2 SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="ggplotd-0.4.7" level="project" />
+    <orderEntry type="library" name="ggplotd-1.2.3" level="project" />
     <orderEntry type="library" name="cairod-0.0.1-alpha.3+1.10.2" level="project" />
     <orderEntry type="library" name="derelict-ft-1.0.2" level="project" />
     <orderEntry type="library" name="derelict-util-2.1.0" level="project" />
     <orderEntry type="library" name="windows-headers-1.0.4" level="project" />
     <orderEntry type="library" name="x11-1.0.21" level="project" />
-    <orderEntry type="library" name="painlesstraits-0.0.3" level="project" />
+    <orderEntry type="library" name="dstats-1.0.6" level="project" />
+    <orderEntry type="library" name="painlesstraits-0.3.0" level="project" />
+    <orderEntry type="library" name="color-0.0.9" level="project" />
     <orderEntry type="library" name="dunit-1.0.16" level="project" />
-    <orderEntry type="library" name="gtk-d-3.9.0" level="project" />
-    <orderEntry type="library" name="gtk-d:gtkd-3.9.0" level="project" />
-    <orderEntry type="library" name="gtk-d:gstreamer-3.9.0" level="project" />
-    <orderEntry type="library" name="gtk-d:peas-3.9.0" level="project" />
-    <orderEntry type="library" name="gtk-d:vte-3.9.0" level="project" />
-    <orderEntry type="library" name="gtk-d:sv-3.9.0" level="project" />
+    <orderEntry type="library" name="gtk-d:gtkd-3.3.1" level="project" />
+    <orderEntry type="library" name="gtk-d-3.3.1" level="project" />
+    <orderEntry type="library" name="gtk-d:gtkdgl-3.3.1" level="project" />
+    <orderEntry type="library" name="gtk-d:gstreamer-3.3.1" level="project" />
+    <orderEntry type="library" name="gtk-d:vte-3.3.1" level="project" />
+    <orderEntry type="library" name="gtk-d:sv-3.3.1" level="project" />
   </component>
 </module>
