@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gtk-d:peas-3.9.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.dub/packages/gtk-d-3.9.0/gtk-d/generated/peas" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

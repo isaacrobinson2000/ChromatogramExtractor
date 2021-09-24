@@ -8,6 +8,7 @@ import std.bitmanip: read, Endian;
 import std.range;
 import std.base64: Base64;
 import std.conv: to;
+import std.zlib: uncompress;
 
 static enum CHROMATOGRAM_LIST_TAG = "chromatogramList";
 static enum CHROMATOGRAM_TAG = "chromatogram";
@@ -125,7 +126,8 @@ template ChromatogamExtactor(E, uint BS = 8) {
                         isIntensity = val == "MS:1000515";
                         break;
                     case "MS:1000576":
-                        compression = 0;
+                    case "MS:1000574":
+                        compression = val == "MS:1000574";
                         break;
                     case "MS:1000523":
                     case "MS:1000521":
@@ -154,7 +156,7 @@ template ChromatogamExtactor(E, uint BS = 8) {
                     element = p.front;
                 }
                 // Now decode and store...
-                ubyte[] rawData = Base64.decode(textData);
+                ubyte[] rawData = (compression)? cast(ubyte[])uncompress(Base64.decode(textData)): Base64.decode(textData);
                 auto rawIter = chain(rawData);
                 double[] result = new double[rawData.length / ((isDouble)? double.sizeof: float.sizeof)];
 

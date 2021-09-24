@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="color-0.0.9">
+  <library name="ggplotd-0.4.7">
     <CLASSES>
-      <root url="file://$USER_HOME$/.dub/packages/color-0.0.9/color" />
+      <root url="file://$USER_HOME$/.dub/packages/ggplotd-0.4.7/ggplotd/source" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
