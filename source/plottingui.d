@@ -11,7 +11,7 @@ import cairo.Surface;
 import ggplotd.ggplotd;
 import ggplotd.bounds: Bounds, width, height;
 
-/*
+
 class TransformableScale {
     double xCenterShift = 0;
     double yCenterShift = 0;
@@ -28,21 +28,13 @@ class TransformableScale {
 
         return c;
     }
-}*/
-
-/*
-enum PlotEditMode {
-    MOVE,
-    ZOOM
 }
-*/
 
 class PlotWidget: DrawingArea {
     private:
 
     GGPlotD _plot;
-    //TransformableScale scale;
-    //PlotEditMode mode;
+    TransformableScale scale;
 
     protected:
 

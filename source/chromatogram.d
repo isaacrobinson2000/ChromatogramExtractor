@@ -23,18 +23,18 @@ enum ubyte[8] MAGIC_VALUE = ['C', 'H', 'R', 'O', 'M', 'A', 'T', 'O'];
 enum ubyte[4] GRAM_CHUNK = ['G', 'R', 'A', 'M'];
 
 alias ChromatogramHeader = IOStruct!(
-    IOValue!(ubyte[8], "magic", CHROMATOGRAM_ENDIAN),
+    IOConstant!(ubyte[8], "magic", CHROMATOGRAM_ENDIAN, MAGIC_VALUE),
     IOValue!(size_t, "first", CHROMATOGRAM_ENDIAN)
 );
 
 alias ChromatogramData = IOStruct!(
-    IOValue!(byte[4], "magic", CHROMATOGRAM_ENDIAN),
+    IOConstant!(byte[4], "magic", CHROMATOGRAM_ENDIAN, GRAM_CHUNK),
     IOValue!(ushort, "nameSize", CHROMATOGRAM_ENDIAN),
-    IOValue!(ubyte, "name", CHROMATOGRAM_ENDIAN, "nameSize"),
+    IOArray!(ubyte, "name", CHROMATOGRAM_ENDIAN, "nameSize"),
     IOValue!(size_t, "numEntries", CHROMATOGRAM_ENDIAN),
     IOValue!(size_t, "next", CHROMATOGRAM_ENDIAN),
-    IOValue!(double, "times", CHROMATOGRAM_ENDIAN, "numEntries"),
-    IOValue!(double, "intensities", CHROMATOGRAM_ENDIAN, "numEntries"),
+    IOArray!(double, "times", CHROMATOGRAM_ENDIAN, "numEntries"),
+    IOArray!(double, "intensities", CHROMATOGRAM_ENDIAN, "numEntries"),
 );
 
 class ChromatogramWriter(R) if(isOutputRange!(R, ubyte)) {
@@ -95,6 +95,7 @@ template ChromatogamExtactor(E, uint BS = 8) {
         auto data = ChromatogramData(GRAM_CHUNK);
 
         data.name = cast(ubyte[])(p.front.attributes.get("id", "Unknown"));
+        data.nameSize = cast(ushort)data.name.length;
         data.numEntries = to!size_t(p.front.attributes.get("defaultArrayLength", "0"));
 
         foreach(element; p) {
